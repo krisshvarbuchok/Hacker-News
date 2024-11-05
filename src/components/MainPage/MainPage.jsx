@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import { memo, useState } from "react";
 import styles from "./mainPage.module.css";
-import getTime from "../helpers/getTime";
+import getTime from "../../helpers/getTime";
 
 const LIMIT = 100;
 
 
 const MainPage = memo(() => {
     const { info } = useSelector(state => state.list);
+    console.log(info);
 
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
@@ -22,15 +23,21 @@ const MainPage = memo(() => {
 
     return (
         <>
-            <ul>
-                <div>
+
+            <main className='container'>
+                <section className={styles.list}>
                     {currentItems.map((item) => {
-                        return <li key={item.id}>
-                            <p>{item.by}</p>
-                            <p>{item.title} </p>
-                            <p>{getTime(item.time)}</p>
-                            <p>{item.score}</p>
-                        </li>
+                        return <div key={item.id} className={styles.item}>
+                            <a href={`${item.url}`} >
+                                <p>{item.title} </p>
+                            </a>
+                            <div className={styles.info}>
+                                <p>{item.by}</p>
+                                <p>{getTime(item.time)}</p>
+                                <p>{item.score}</p>
+                            </div>
+                            <hr className={styles.line} />
+                        </div>
                     })}
 
                     <div className="page">
@@ -56,7 +63,7 @@ const MainPage = memo(() => {
                                 disabled={currentPage === totalPages}
                             >{'>'}</button>}
                     </div>
-                </div>
+                </section>
 
                 {/* {info.map(item => {
                     return <li key={item.id}>
@@ -66,10 +73,10 @@ const MainPage = memo(() => {
 
 
 
-            </ul>
+            </main >
         </>
     )
-},(prevProps, nextProps) => {
+}, (prevProps, nextProps) => {
     const prevData = prevProps.info || [];
     const nextData = nextProps.info || [];
     const sortedPrev = [...prevData].sort((a, b) => a.id - b.id);
