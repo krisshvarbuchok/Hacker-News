@@ -3,18 +3,34 @@
     display: flex;
     flex-direction: column;
     background-color: #f6f6ef;
-}
-.item{
     width: 100%;
-    display: flex;
-    flex-direction: column;
 }
+
+.item{
+    list-style-type: disclosure-closed;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 5px;
+    border-bottom: solid 1px gray;
+}
+li::marker {
+	color: #828282;
+	font-size: 14px;
+}
+a{
+    text-decoration:none;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+}
+a:hover{
+    text-decoration: underline;
+}
+
 .info{
     display: flex;
-    flex-direction:row
+    flex-direction:row;
+    color: #828282;
+    gap: 5px;
+    font-size: 14px;
 }
-/* .line{
-    all: unset;
-    height: 1px;
-    background-color: #ff6600;
-} */

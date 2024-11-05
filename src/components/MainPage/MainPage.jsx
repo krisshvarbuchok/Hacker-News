@@ -26,20 +26,23 @@ const MainPage = memo(() => {
 
             <main className='container'>
                 <section className={styles.list}>
-                    {currentItems.map((item) => {
-                        return <div key={item.id} className={styles.item}>
-                            <a href={`${item.url}`} >
-                                <p>{item.title} </p>
-                            </a>
-                            <div className={styles.info}>
-                                <p>{item.by}</p>
-                                <p>{getTime(item.time)}</p>
-                                <p>{item.score}</p>
-                            </div>
-                            <hr className={styles.line} />
-                        </div>
-                    })}
-
+                    <ul>
+                        {currentItems.map((item) => {
+                            return <li key={item.id} className={styles.item}>
+                                <a href={`${item.url}`} >
+                                    <p>{item.title} </p>
+                                </a>
+                                <div className={styles.info}>
+                                    <p className={styles.by}>Autor: {item.by}</p>
+                                    <p>|</p>
+                                    <p className={styles.time}>Published: {getTime(item.time)}</p>
+                                    <p>|</p>
+                                    <p className={styles.score}>Rating: {item.score} </p>
+                                </div>
+                                
+                            </li>
+                        })}
+                    </ul>
                     <div className="page">
                         {info.length !== 0 &&
                             <button onClick={() => handlePageChange(currentPage - 1)}
@@ -64,15 +67,6 @@ const MainPage = memo(() => {
                             >{'>'}</button>}
                     </div>
                 </section>
-
-                {/* {info.map(item => {
-                    return <li key={item.id}>
-                        {item.title}
-                    </li>
-                })} */}
-
-
-
             </main >
         </>
     )
