@@ -8,7 +8,6 @@ const LIMIT = 100;
 
 const MainPage = memo(() => {
     const { info } = useSelector(state => state.list);
-    console.log(info);
 
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
