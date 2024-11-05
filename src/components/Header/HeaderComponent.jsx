@@ -10,7 +10,6 @@ function HeaderComponent() {
     const navigate = useNavigate();
 
     const handleRefresh = () => {
-        console.log('click');
         dispach(fetchGetListRefresh());
         navigate('/');
     }

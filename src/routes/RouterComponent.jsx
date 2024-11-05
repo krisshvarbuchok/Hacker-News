@@ -1,11 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import App from "../App";
+import OpenNew from "../components/OpenNew/OpenNew";
+import HomePage from "../components/HomePage/HomePage";
+
 const RouterComponent = () =>{
 
     return (
         <Routes>
-            <Route path='/' element={<App />} />
-
+            <Route path='/' element={<HomePage />} />
+            <Route path="openNew" element={<OpenNew />}/>
         </Routes>
     )
 }
