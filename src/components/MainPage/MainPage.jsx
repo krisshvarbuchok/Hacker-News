@@ -1,8 +1,9 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { memo, useState } from "react";
 import styles from "./mainPage.module.css";
 import getTime from "../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
+import { setOpenNew } from "../../redux/slices/OpenNewSlice";
 
 const LIMIT = 100;
 
@@ -11,6 +12,7 @@ const MainPage = memo(() => {
     const { info } = useSelector(state => state.list);
     //console.log(info);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
@@ -23,8 +25,11 @@ const MainPage = memo(() => {
         setCurrentPage(page);
     };
 
-    const handleOpen = () =>{
-        navigate('openNew')
+    const handleOpen = (item) =>{
+        console.log(item);
+        
+        dispatch(setOpenNew(item));
+        navigate('openNew');
     }
 
     return (
@@ -36,7 +41,7 @@ const MainPage = memo(() => {
                         {currentItems.map((item) => {
                             return <li key={item.id} className={styles.item}>
 
-                                <p className={styles.title} onClick={() => handleOpen()}>{item.title} </p>
+                                <p className={styles.title} onClick={() => handleOpen(item)}>{item.title} </p>
 
                                 <div className={styles.info}>
                                     <p className={styles.by}>Autor: {item.by}</p>

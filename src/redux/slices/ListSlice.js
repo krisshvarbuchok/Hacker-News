@@ -32,6 +32,18 @@ const fetchGetInfo = createAsyncThunk('info/fetchGetInfo', async(id) => {
     
     return data;
 })
+const getInfoAboutComments = async(id) =>{
+    const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
+    //console.log(response.data);
+    
+    return response.data;
+}
+const fetchGetInfoAboutComments = createAsyncThunk('comments/fetchGetInfoAboutComments', async(id) =>{
+    const data = await getInfoAboutComments(id);
+    console.log(data);
+    
+    return data;
+})
 
 
 const ListSlice = createSlice({
@@ -39,6 +51,7 @@ const ListSlice = createSlice({
     initialState: {
         data: [],
         info: [],
+        comments: [],
         status : null,
         error: null,
     },
@@ -80,7 +93,11 @@ const ListSlice = createSlice({
                 state.status = 'error';
                 state.error = action.payload;
             })
+            .addCase(fetchGetInfoAboutComments.fulfilled, (state, action) => {
+               
+                state.comments.push(action.payload);
+            })
     }
 })
-export {fetchGetList, fetchGetListRefresh, fetchGetInfo};
+export {fetchGetList, fetchGetListRefresh, fetchGetInfo, fetchGetInfoAboutComments};
 export default ListSlice.reducer;
