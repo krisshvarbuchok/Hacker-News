@@ -1,6 +1,35 @@
+.body{
+    padding-left: 35px;
+    display: flex;
+    flex-direction: column;
+}
 .warning{
-    margin-top: 100px; 
+    padding-top: 100px; 
 }
 .title{
-    margin-top: 100px;
+    /* text-decoration:none; */
+    color: black;
+    font-weight: 500;
+    font-size: 40px;
+    padding-top: 100px;
+}
+a{
+    text-decoration: none;
+    color: #828282;
+    font-size: 14px;
+}
+.info{
+    display: flex;
+    gap: 30px;
+}
+.autor{
+    display: flex;
+    gap: 10px;
+}
+.by{
+    font-style: italic;
+}
+.comments{
+    display: flex;
+    gap: 10px;
 }
