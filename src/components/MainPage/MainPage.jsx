@@ -14,7 +14,7 @@ const MainPage = memo(() => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const itemsPerPage = 10;
+    const itemsPerPage = 30;
     const [currentPage, setCurrentPage] = useState(1);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -54,16 +54,16 @@ const MainPage = memo(() => {
                             </li>
                         })}
                     </ul>
-                    <div className="page">
+                    <div className={styles.page}>
                         {info.length !== 0 &&
                             <button onClick={() => handlePageChange(currentPage - 1)}
-                                className="pageButton"
+                                className={styles.pageButton}
                                 disabled={currentPage === 1}
                             >{'<'}</button>}
                         {Array.from({ length: totalPages }, (_, index) => (
                             <button
                                 key={index}
-                                className="pageButton"
+                                className={styles.pageButton}
                                 onClick={() => handlePageChange(index + 1)}
                                 disabled={currentPage === index + 1}
                             >
@@ -73,7 +73,7 @@ const MainPage = memo(() => {
                         ))}
                         {info.length !== 0 &&
                             <button onClick={() => handlePageChange(currentPage + 1)}
-                                className="pageButton"
+                                className={styles.pageButton}
                                 disabled={currentPage === totalPages}
                             >{'>'}</button>}
                     </div>

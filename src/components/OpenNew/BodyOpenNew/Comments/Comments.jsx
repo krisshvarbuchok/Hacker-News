@@ -21,7 +21,7 @@ const Comments = () => {
                     return <li key={item.id}>
                         <p>{item.by}</p>
                         <p>{item.text}</p>
-                        {item.kids.length !== 0 ? <Comments /> : false}
+                        {/* {item.kids.length !== 0 ? <Comments /> : false} */}
                     </li>
                 })}
             </ul>

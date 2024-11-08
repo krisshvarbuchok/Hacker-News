@@ -15,9 +15,17 @@ const BodyOpenNew = () => {
 
     } catch (err) {
         console.log(err.message);
-        return <div className={styles.warning} >There isn`t this new</div>
+        return <div className={styles.warning} >
+            <p>There isn`t a new.</p>
+            <div>
+                <img className={styles.img}
+                    alt='empty'
+                    src={`/empty.svg`}
+                />
+            </div>
+
+        </div>
     }
-    //if (Object.keys(open) === 0) throw new Error;
 
     return (
         <>
@@ -39,11 +47,21 @@ const BodyOpenNew = () => {
                     <div className={styles.comments}>
                         <p>Number of comments</p>
                         {open.descendants !== 0 ?
-                            <p> {open.kids.length}</p> : 
+                            <p> {open.kids.length}</p> :
                             <p>0</p>
-                            }</div>
+                        }</div>
                 </div>
-                {open.descendants > 0 ? <Comments /> : 'no comments'}
+                {open.descendants > 0 ? <Comments /> :
+                    <div className={styles.warning} >
+                        <p>No comments</p>
+                        <div>
+                            <img className={styles.img}
+                                alt='empty'
+                                src={`/empty.svg`}
+                            />
+                        </div>
+
+                    </div>}
             </div>
         </>
     )

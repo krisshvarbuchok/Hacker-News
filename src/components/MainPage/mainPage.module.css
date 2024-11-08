@@ -5,6 +5,7 @@
     flex-direction: column;
     background-color: #f6f6ef;
     width: 100%;
+    /* position: relative; */
 }
 
 .item{
@@ -35,3 +36,24 @@ li::marker {
     gap: 5px;
     font-size: 14px;
 }
+
+.page {
+    margin: 15px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    /* position: relative; */
+  }
+  
+  .pageButton {
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    transition: all 0.5s ease-out; 
+  }
+  .pageButton:hover{
+    background-color: rgb(142, 142, 142);
+    transition: all 0.5s ease-out; 
+  }

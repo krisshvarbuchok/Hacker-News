@@ -3,6 +3,7 @@ import HeaderComponent from "../Header/HeaderComponent";
 import MainPage from "../MainPage/MainPage";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGetInfo, fetchGetList } from '../../redux/slices/ListSlice';
+import FooterComponent from '../Footer/FooterComponent';
 
 
 function HomePage() {
@@ -21,6 +22,7 @@ function HomePage() {
     <>
       <HeaderComponent />
       <MainPage />
+      <FooterComponent />
     </>
   )
 }
