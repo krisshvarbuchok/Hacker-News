@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./bodyOpenNew.module.css";
-import Comments from "./Comments/Comments";
+//import Comments from "./Comments/Comments";
+import CommentsWrapper from "./Comments/Comments";
 
 const BodyOpenNew = () => {
     let date;
@@ -33,9 +34,11 @@ const BodyOpenNew = () => {
                 <div className={styles.title}>
                     {open.title}
                 </div>
-                <a href={`${open.url}`} target="_blank" >
-                    Read more
-                </a>
+                <div>
+                    <a href={`${open.url}`} target="_blank" >
+                        Read more
+                    </a>
+                </div>
                 <div className={styles.info}>
                     <div className={styles.autor}>
                         <p>Autor:</p>
@@ -51,7 +54,7 @@ const BodyOpenNew = () => {
                             <p>0</p>
                         }</div>
                 </div>
-                {open.descendants > 0 ? <Comments /> :
+                {open.descendants > 0 ? <CommentsWrapper /> :
                     <div className={styles.warning} >
                         <p>No comments</p>
                         <div>

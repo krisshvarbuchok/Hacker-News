@@ -4,6 +4,7 @@ import styles from "./mainPage.module.css";
 import getTime from "../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
 import { setOpenNew } from "../../redux/slices/OpenNewSlice";
+import { cleverComments } from "../../redux/slices/ListSlice";
 
 const LIMIT = 100;
 
@@ -27,7 +28,7 @@ const MainPage = memo(() => {
 
     const handleOpen = (item) =>{
         console.log(item);
-        
+        dispatch(cleverComments())
         dispatch(setOpenNew(item));
         navigate('openNew');
     }

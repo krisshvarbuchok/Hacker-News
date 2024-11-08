@@ -44,6 +44,16 @@ const fetchGetInfoAboutComments = createAsyncThunk('comments/fetchGetInfoAboutCo
     
     return data;
 })
+const getInfoCommentsKids = async(id) =>{
+    const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
+    return response.data;
+}
+const fetchInfoCommensKids = createAsyncThunk('kids/fetchInfoCommensKids', async(id) =>{
+    const data = await getInfoCommentsKids(id);
+    console.log(data);
+    
+    return data;
+})
 
 
 const ListSlice = createSlice({
@@ -52,10 +62,15 @@ const ListSlice = createSlice({
         data: [],
         info: [],
         comments: [],
+        kids: [],
         status : null,
         error: null,
     },
-    reducers: {},
+    reducers: {
+        cleverComments: (state, action) => {
+            state.comments = [];
+        }
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchGetList.pending, (state, action) => {
@@ -97,7 +112,12 @@ const ListSlice = createSlice({
                
                 state.comments.push(action.payload);
             })
+            .addCase(fetchInfoCommensKids.fulfilled, (state, action) => {
+               
+                state.kids.push(action.payload);
+            })
     }
 })
-export {fetchGetList, fetchGetListRefresh, fetchGetInfo, fetchGetInfoAboutComments};
+export const {cleverComments} = ListSlice.actions;
+export {fetchGetList, fetchGetListRefresh, fetchGetInfo, fetchGetInfoAboutComments, fetchInfoCommensKids};
 export default ListSlice.reducer;
