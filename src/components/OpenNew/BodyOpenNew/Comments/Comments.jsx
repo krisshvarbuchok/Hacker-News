@@ -4,58 +4,59 @@ import { fetchGetInfoAboutComments, fetchInfoCommensKids } from "../../../../red
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import Box from '@mui/material/Box';
+import styles from './comments.module.css';
 
 
-const Comments = () => {
+const Comments = ({ kidsIds = [] }) => {
     const dispatch = useDispatch();
-    const open = useSelector(state => state.open);
-    console.log(open);
+    // const open = useSelector(state => state.open);
+    //console.log(open);
     const { comments } = useSelector(state => state.list);
-console.log(comments);
-const {kids} = useSelector(state => state.list);
-console.log(kids);
-
+    console.log(comments);
+    //const { kids } = useSelector(state => state.list);
+    //console.log('kids', kids);
 
     useEffect(() => {
-        open.kids.forEach(id => dispatch(fetchGetInfoAboutComments(id)));
-    }, [open]);
-    useEffect(()=>{
-        comments.forEach(item => item.kids ? item.kids.forEach(id => dispatch(fetchInfoCommensKids(id))) : false)
-    }, [comments])
+        kidsIds.forEach(id => dispatch(fetchGetInfoAboutComments(id)));
+    }, [kidsIds, dispatch]);
+
 
     return (
+        <Box 
+        // sx={{ minHeight: 352, minWidth: 150 }} 
+        >
+        {kidsIds.map((id, index) => {
+            const comment = comments.find(c => c.id === id);
+            if (!comment) return null;
 
-        <Box sx={{ minHeight: 352, minWidth: 250 }}>
-            <SimpleTreeView>
-                {comments.map(item => {
-                    //const comment = comments.find(c => c.id === id);
-                    //if (!comment) return null;
-
-                    return (
-                        <TreeItem key={item.id} itemId={`${item.id}`} 
+            return (
+                <SimpleTreeView key={comment.id ?? `tree-${index}`} >
+                    <TreeItem
+                        key={comment.id ?? `item-${index}`}
+                        itemId={comment.id ? `${comment.id}` : 'no-id'}
                         label={
                             <>
-                              <span style={{ fontWeight: 'bold' }}>{item?.by ?? 'Deleted comment'}</span>
-                              <p style={{ fontStyle: 'italic', margin: 0 }}>{item.text}</p>
+                                <span style={{ fontWeight: 'bold' }}>{comment?.by ?? 'Deleted comment'}</span>
+                                <p style={{ fontStyle: 'italic', margin: 0 }}>{comment.text}</p>
                             </>
-                          } 
-                        disabled={item?.deleted ?? false} >
-                           
-                            {/* {item.kids && <Comments  />} */}
-                        </TreeItem>
-                    );
-                })}
-            </SimpleTreeView>
-        </Box>
+                        }
+                        disabled={comment?.deleted ?? false}
+                        className={styles.boxComments}
+                    >
+                        {comment.kids && comment.kids.length > 0 && (
+                            <Comments kidsIds={comment.kids} />
+                        )}
+                    </TreeItem>
+                </SimpleTreeView>
+            );
+        })}
+    </Box>
 
     )
 }
-// export default Comments;
 const CommentsWrapper = () => {
-    // const open = useSelector(state => state.open);
-
-    // return open.kids ? <Comments commentIds={open.kids} /> : null;
-    return <Comments  />
+    const open = useSelector(state => state.open);
+    return open.kids ? <Comments kidsIds={open.kids} /> : null;
 };
 
 export default CommentsWrapper;

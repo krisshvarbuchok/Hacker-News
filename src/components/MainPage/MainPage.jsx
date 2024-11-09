@@ -4,14 +4,14 @@ import styles from "./mainPage.module.css";
 import getTime from "../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
 import { setOpenNew } from "../../redux/slices/OpenNewSlice";
-import { cleverComments } from "../../redux/slices/ListSlice";
+import { cleverComments, fetchGetInfoAboutComments } from "../../redux/slices/ListSlice";
 
 const LIMIT = 100;
 
 
 const MainPage = memo(() => {
     const { info } = useSelector(state => state.list);
-    //console.log(info);
+    console.log('info! loof length', info);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -30,6 +30,9 @@ const MainPage = memo(() => {
         console.log(item);
         dispatch(cleverComments())
         dispatch(setOpenNew(item));
+        if(item.kids)item.kids.forEach(item => {
+            dispatch(fetchGetInfoAboutComments(item))
+        });
         navigate('openNew');
     }
 

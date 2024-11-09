@@ -9,10 +9,10 @@ const BodyOpenNew = () => {
     console.log(open);
 
     try {
-        if (Object.keys(open).length === 0) throw new Error;
-        console.log(open.time);
+        if (Object.keys(open).length === 0) throw new Error ('The new is out of date') ;
+        //console.log(open.time);
         date = new Date(open.time * 1000);
-        console.log(date.getHours(), date.getMinutes());
+        //console.log(date.getHours(), date.getMinutes());
 
     } catch (err) {
         console.log(err.message);
@@ -45,7 +45,7 @@ const BodyOpenNew = () => {
                         <p className={styles.by}>{open.by}</p>
                     </div>
                     <div >
-                        Published: {date.getHours()}:{date.getMinutes()}, date: {date.getDate()}.{date.getMonth() + 1}.{date.getFullYear()}
+                        Published: {date.getHours().toString().padStart(2, "0")}:{date.getMinutes().toString().padStart(2, "0")}, date: {date.getDate().toString().padStart(2, "0")}.{(date.getMonth() + 1).toString().padStart(2, "0")}.{date.getFullYear()}
                     </div>
                     <div className={styles.comments}>
                         <p>Number of comments</p>

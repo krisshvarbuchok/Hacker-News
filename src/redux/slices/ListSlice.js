@@ -50,7 +50,7 @@ const getInfoCommentsKids = async(id) =>{
 }
 const fetchInfoCommensKids = createAsyncThunk('kids/fetchInfoCommensKids', async(id) =>{
     const data = await getInfoCommentsKids(id);
-    console.log(data);
+    
     
     return data;
 })
@@ -113,8 +113,15 @@ const ListSlice = createSlice({
                 state.comments.push(action.payload);
             })
             .addCase(fetchInfoCommensKids.fulfilled, (state, action) => {
+               const {id} = action.payload;
+               //state.kids.forEach(item => item[parent] !== undefined ? item : [...item, {[parent]: action.payload}])
+               //[ {5154545: {}}, ...]
+               //state.kids[parent] = action.payload;
+               if(state.kids.every(item => item.id !== id))state.kids.push(action.payload);
+               //console.log(state.kids);
                
-                state.kids.push(action.payload);
+               //state.kids.forEach(item => item.parent !== parent ? [...item, {[parent]: action.payload}] : [...item])
+                //state.kids.push({[parent]: action.payload});
             })
     }
 })
