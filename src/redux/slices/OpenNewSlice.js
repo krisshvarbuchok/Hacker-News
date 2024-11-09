@@ -6,12 +6,12 @@ const OpenNewSlice = createSlice({
     reducers:{
         setOpenNew: (state, action)=>{
             console.log(action.payload);
-            
             return state = action.payload;
-           
-            
+        },
+        cleverOpenNew: (state, action) => {
+            return state = {};
         }
     }
 })
-export const {setOpenNew} = OpenNewSlice.actions;
+export const {setOpenNew, cleverOpenNew} = OpenNewSlice.actions;
 export default OpenNewSlice.reducer;

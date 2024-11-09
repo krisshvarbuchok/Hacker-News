@@ -15,6 +15,10 @@
     height: 50px;
     /* Полупрозрачный светло-серый при скролле */
 }
+.header:hover {
+    opacity: 1;
+    height: 70px;
+}
 
 .refresh {
     display: flex;

@@ -3,9 +3,6 @@
     min-height: 100vh;
     background-color: #f6f6ef;
 }
-/* .bigContainer{
-    display: flex;
+.position{
+    position: relative;
 }
-.mainContainer{
-    flex: 1;
-} */

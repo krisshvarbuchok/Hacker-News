@@ -5,6 +5,7 @@ import getTime from "../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
 import { setOpenNew } from "../../redux/slices/OpenNewSlice";
 import { cleverComments, fetchGetInfoAboutComments } from "../../redux/slices/ListSlice";
+import { setPage } from "../../redux/slices/PagesSlice";
 
 const LIMIT = 100;
 
@@ -16,15 +17,12 @@ const MainPage = memo(() => {
     const dispatch = useDispatch();
 
     const itemsPerPage = 30;
-    const [currentPage, setCurrentPage] = useState(1);
-    const startIndex = (currentPage - 1) * itemsPerPage;
+    const page = useSelector(state => state.page);
+    const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentItems = info.slice(startIndex, endIndex);
     const totalPages = Math.ceil(LIMIT / itemsPerPage);
 
-    const handlePageChange = (page) => {
-        setCurrentPage(page);
-    };
 
     const handleOpen = (item) =>{
         console.log(item);
@@ -60,25 +58,25 @@ const MainPage = memo(() => {
                     </ul>
                     <div className={styles.page}>
                         {info.length !== 0 &&
-                            <button onClick={() => handlePageChange(currentPage - 1)}
+                            <button onClick={() => dispatch(setPage(page - 1))}
                                 className={styles.pageButton}
-                                disabled={currentPage === 1}
+                                disabled={page === 1}
                             >{'<'}</button>}
                         {Array.from({ length: totalPages }, (_, index) => (
                             <button
                                 key={index}
                                 className={styles.pageButton}
-                                onClick={() => handlePageChange(index + 1)}
-                                disabled={currentPage === index + 1}
+                                onClick={() => dispatch(setPage(index + 1))}
+                                disabled={page === index + 1}
                             >
                                 {index + 1}
                             </button>
 
                         ))}
                         {info.length !== 0 &&
-                            <button onClick={() => handlePageChange(currentPage + 1)}
+                            <button onClick={() => dispatch(setPage(page + 1))}
                                 className={styles.pageButton}
-                                disabled={currentPage === totalPages}
+                                disabled={page === totalPages}
                             >{'>'}</button>}
                     </div>
                 </section>

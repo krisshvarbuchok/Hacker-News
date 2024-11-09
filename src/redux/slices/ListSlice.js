@@ -41,7 +41,6 @@ const getInfoAboutComments = async(id) =>{
 const fetchGetInfoAboutComments = createAsyncThunk('comments/fetchGetInfoAboutComments', async(id) =>{
     const data = await getInfoAboutComments(id);
     console.log(data);
-    
     return data;
 })
 const getInfoCommentsKids = async(id) =>{
@@ -50,8 +49,6 @@ const getInfoCommentsKids = async(id) =>{
 }
 const fetchInfoCommensKids = createAsyncThunk('kids/fetchInfoCommensKids', async(id) =>{
     const data = await getInfoCommentsKids(id);
-    
-    
     return data;
 })
 
@@ -114,14 +111,7 @@ const ListSlice = createSlice({
             })
             .addCase(fetchInfoCommensKids.fulfilled, (state, action) => {
                const {id} = action.payload;
-               //state.kids.forEach(item => item[parent] !== undefined ? item : [...item, {[parent]: action.payload}])
-               //[ {5154545: {}}, ...]
-               //state.kids[parent] = action.payload;
                if(state.kids.every(item => item.id !== id))state.kids.push(action.payload);
-               //console.log(state.kids);
-               
-               //state.kids.forEach(item => item.parent !== parent ? [...item, {[parent]: action.payload}] : [...item])
-                //state.kids.push({[parent]: action.payload});
             })
     }
 })

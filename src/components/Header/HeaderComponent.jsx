@@ -1,17 +1,23 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchGetListRefresh } from "../../redux/slices/ListSlice";
 import { useNavigate } from "react-router-dom";
 import styles from "./headerComponent.module.css"
 import { useEffect } from "react";
+import ComeBack from "../OpenNew/ComeBack/ComeBack";
+import { cleverOpenNew } from "../../redux/slices/OpenNewSlice";
+import { setPage } from "../../redux/slices/PagesSlice";
 
 
 function HeaderComponent() {
     const dispach = useDispatch();
     const navigate = useNavigate();
+    const open = useSelector(state => state.open);
 
     const handleRefresh = () => {
         dispach(fetchGetListRefresh());
         navigate('/');
+        dispach(cleverOpenNew());
+        dispach(setPage(1));
     }
     useEffect(() => {
         const handleScroll = () => {
@@ -39,6 +45,7 @@ function HeaderComponent() {
                             src={`/news.svg`}
                         />
                     </div>
+                    {Object.keys(open).length !== 0 && <ComeBack />}
                     <button className={styles.button} onClick={handleRefresh}>Fresh news</button>
                 </div>
             </nav>
