@@ -2,6 +2,7 @@
     background-color: #f0f0f0;
     height: 70px;
     position: fixed;
+    z-index: 100;
     top: 0;
     right: 0;
     left: 0;
@@ -13,7 +14,6 @@
 .header.scrolled {
     opacity: 0.8;
     height: 50px;
-    /* Полупрозрачный светло-серый при скролле */
 }
 .header:hover {
     opacity: 1;
@@ -24,6 +24,9 @@
     display: flex;
     align-items: center;
     gap: 10%;
+}
+.comeBack{
+    position: absolute;
 }
 
 .imgContainer {

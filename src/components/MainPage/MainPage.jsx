@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { memo, useState } from "react";
+import { memo } from "react";
 import styles from "./mainPage.module.css";
 import getTime from "../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ const LIMIT = 100;
 
 const MainPage = memo(() => {
     const { info } = useSelector(state => state.list);
-    console.log('info! loof length', info);
+   // console.log('info! loof length', info);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -25,7 +25,6 @@ const MainPage = memo(() => {
 
 
     const handleOpen = (item) =>{
-        console.log(item);
         dispatch(cleverComments())
         dispatch(setOpenNew(item));
         if(item.kids)item.kids.forEach(item => {

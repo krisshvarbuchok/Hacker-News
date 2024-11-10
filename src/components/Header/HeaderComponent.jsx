@@ -11,7 +11,7 @@ import { setPage } from "../../redux/slices/PagesSlice";
 function HeaderComponent() {
     const dispach = useDispatch();
     const navigate = useNavigate();
-    const open = useSelector(state => state.open);
+    const {open} = useSelector(state => state.open);
 
     const handleRefresh = () => {
         dispach(fetchGetListRefresh());
@@ -45,7 +45,7 @@ function HeaderComponent() {
                             src={`/news.svg`}
                         />
                     </div>
-                    {Object.keys(open).length !== 0 && <ComeBack />}
+                    {Object.keys(open).length !== 0 && <div className={styles.comeBack}><ComeBack /></div> }
                     <button className={styles.button} onClick={handleRefresh}>Fresh news</button>
                 </div>
             </nav>

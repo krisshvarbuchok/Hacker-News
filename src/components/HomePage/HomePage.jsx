@@ -4,13 +4,13 @@ import MainPage from "../MainPage/MainPage";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGetInfo, fetchGetList } from '../../redux/slices/ListSlice';
 import FooterComponent from '../Footer/FooterComponent';
-// import styles from './homePage.module.css';
+
 
 
 function HomePage() {
   const dispach = useDispatch();
   const { data } = useSelector(state => state.list);
-  //console.log(data);
+ 
 
 
   useEffect(() => {

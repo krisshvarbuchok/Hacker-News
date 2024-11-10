@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGetInfoAboutComments, fetchInfoCommensKids } from "../../../../redux/slices/ListSlice";
+import { fetchGetInfoAboutComments } from "../../../../redux/slices/ListSlice";
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import Box from '@mui/material/Box';
@@ -9,25 +9,24 @@ import styles from './comments.module.css';
 
 const Comments = ({ kidsIds = [] }) => {
     const dispatch = useDispatch();
-    // const open = useSelector(state => state.open);
-    //console.log(open);
     const { comments } = useSelector(state => state.list);
-    console.log(comments);
-    //const { kids } = useSelector(state => state.list);
-    //console.log('kids', kids);
+    console.log('comments', comments);
 
     useEffect(() => {
         kidsIds.forEach(id => dispatch(fetchGetInfoAboutComments(id)));
-    }, [kidsIds, dispatch]);
+    }, [kidsIds, dispatch, comments]);
 
 
     return (
-        <Box 
-        // sx={{ minHeight: 352, minWidth: 150 }} 
-        >
+        <Box >
         {kidsIds.map((id, index) => {
+   
             const comment = comments.find(c => c.id === id);
-            if (!comment) return null;
+            if (!comment) {
+                console.log('null');
+                
+                return null;
+            }
 
             return (
                 <SimpleTreeView key={comment.id ?? `tree-${index}`} >
@@ -55,7 +54,7 @@ const Comments = ({ kidsIds = [] }) => {
     )
 }
 const CommentsWrapper = () => {
-    const open = useSelector(state => state.open);
+    const {open} = useSelector(state => state.open);
     return open.kids ? <Comments kidsIds={open.kids} /> : null;
 };
 

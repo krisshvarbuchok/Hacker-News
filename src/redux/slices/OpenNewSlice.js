@@ -1,17 +1,43 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const updateOpenNew = async(id) => {
+    const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
+    //console.log(response.data);
+    return response.data;
+}
+const fetchUpdateOpenNew = createAsyncThunk('openNew/fetchUpdateOpenNew', async(id) =>{
+    const data = await updateOpenNew(id);
+    console.log('update comm', data);
+    return data;
+})
 
 const OpenNewSlice = createSlice({
     name: 'openNew',
-    initialState: {},
-    reducers:{
-        setOpenNew: (state, action)=>{
-            console.log(action.payload);
-            return state = action.payload;
+    initialState: {
+        statusNew: null,
+        open: {},
+    },
+    reducers: {
+        setOpenNew: (state, action) => {
+            //console.log(action.payload);
+            state.open = action.payload;
         },
         cleverOpenNew: (state, action) => {
-            return state = {};
+            state.open = {};
         }
+    },
+    extraReducers: builder => {
+        builder
+            .addCase(fetchUpdateOpenNew.pending, (state, action) => {
+                state.statusNew = 'loading';
+            })
+            .addCase(fetchUpdateOpenNew.fulfilled, (state, action) => {
+                state.statusNew = 'succeeded';
+                state.open = action.payload;
+            })
     }
 })
-export const {setOpenNew, cleverOpenNew} = OpenNewSlice.actions;
+export const { setOpenNew, cleverOpenNew } = OpenNewSlice.actions;
+export {fetchUpdateOpenNew};
 export default OpenNewSlice.reducer;
