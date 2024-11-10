@@ -3,7 +3,7 @@ import { fetchGetListRefresh } from "../../redux/slices/ListSlice";
 import { useNavigate } from "react-router-dom";
 import styles from "./headerComponent.module.css"
 import { useEffect } from "react";
-import ComeBack from "../OpenNew/ComeBack/ComeBack";
+import ComeBack from "../pages/OpenNew/ComeBack/ComeBack";
 import { cleverOpenNew } from "../../redux/slices/OpenNewSlice";
 import { setPage } from "../../redux/slices/PagesSlice";
 
@@ -15,6 +15,8 @@ function HeaderComponent() {
 
     const handleRefresh = () => {
         dispach(fetchGetListRefresh());
+        console.log('refresh on page');
+        
         navigate('/');
         dispach(cleverOpenNew());
         dispach(setPage(1));

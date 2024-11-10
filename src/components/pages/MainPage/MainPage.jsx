@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { memo } from "react";
 import styles from "./mainPage.module.css";
-import getTime from "../../helpers/getTime";
+import getTime from "../../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
-import { setOpenNew } from "../../redux/slices/OpenNewSlice";
-import { cleverComments, fetchGetInfoAboutComments } from "../../redux/slices/ListSlice";
-import { setPage } from "../../redux/slices/PagesSlice";
+import { cleverComments, fetchGetInfoAboutComments } from "../../../redux/slices/ListSlice";
+import { setOpenNew } from "../../../redux/slices/OpenNewSlice";
+import { setPage } from "../../../redux/slices/PagesSlice";
 
 const LIMIT = 100;
 

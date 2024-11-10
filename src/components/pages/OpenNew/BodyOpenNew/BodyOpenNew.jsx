@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./bodyOpenNew.module.css";
 import CommentsWrapper from "./Comments/Comments";
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { fetchGetInfoAboutComments } from "../../../redux/slices/ListSlice";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import { useEffect, useState } from "react";
-import { fetchUpdateOpenNew } from "../../../redux/slices/OpenNewSlice";
+import { fetchGetInfoAboutComments } from "../../../../redux/slices/ListSlice";
+import { fetchUpdateOpenNew } from "../../../../redux/slices/OpenNewSlice";
+
 
 const BodyOpenNew = () => {
     const [loading, setLoading] = useState(false);

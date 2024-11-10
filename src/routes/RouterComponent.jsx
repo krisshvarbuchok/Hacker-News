@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import OpenNew from "../components/OpenNew/OpenNew";
-import HomePage from "../components/HomePage/HomePage";
+import OpenNew from "../components/pages/OpenNew/OpenNew";
+import HomePage from "../components/pages/HomePage/HomePage";
 
 const RouterComponent = () =>{
 

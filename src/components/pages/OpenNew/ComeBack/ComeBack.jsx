@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { cleverOpenNew } from '../../../redux/slices/OpenNewSlice';
+import { cleverOpenNew } from '../../../../redux/slices/OpenNewSlice';
 
 
 const ComeBack = () => {

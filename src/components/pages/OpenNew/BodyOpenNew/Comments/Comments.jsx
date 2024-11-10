@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGetInfoAboutComments } from "../../../../redux/slices/ListSlice";
 import { SimpleTreeView } from '@mui/x-tree-view/SimpleTreeView';
 import { TreeItem } from '@mui/x-tree-view/TreeItem';
 import Box from '@mui/material/Box';
 import styles from './comments.module.css';
+import { fetchGetInfoAboutComments } from "../../../../../redux/slices/ListSlice";
 
 
 const Comments = ({ kidsIds = [] }) => {

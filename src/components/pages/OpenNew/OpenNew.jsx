@@ -1,5 +1,5 @@
-import FooterComponent from "../Footer/FooterComponent";
-import HeaderComponent from "../Header/HeaderComponent";
+import FooterComponent from "../../Footer/FooterComponent";
+import HeaderComponent from "../../Header/HeaderComponent";
 import BodyOpenNew from "./BodyOpenNew/BodyOpenNew";
 import styles from "./openNew.module.css";
 
