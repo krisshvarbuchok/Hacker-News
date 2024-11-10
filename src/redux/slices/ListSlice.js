@@ -68,6 +68,9 @@ const ListSlice = createSlice({
             })
             .addCase(fetchGetList.fulfilled, (state, action) => {
                 state.status = 'succeeded';
+               
+               //if(!state.data.every((value, index) => value === action.payload[index])) state.data = action.payload;;
+               
                 state.data = action.payload;
             })
             .addCase(fetchGetList.rejected, (state, action) => {
@@ -79,7 +82,11 @@ const ListSlice = createSlice({
             })
             .addCase(fetchGetListRefresh.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.data = action.payload;
+                if (JSON.stringify(state.data) !== JSON.stringify(action.payload)) {
+                    state.data = action.payload;
+                }
+               
+                //state.data = action.payload;
             })
             .addCase(fetchGetListRefresh.rejected, (state, action) => {
                 state.status = 'error';
@@ -90,9 +97,9 @@ const ListSlice = createSlice({
             })
             .addCase(fetchGetInfo.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                if(!state.info.find(item => item.id === action.payload.id)) state.info.push(action.payload);
+                if(action.payload && action.payload.id && !state.info.find(item => item.id === action.payload.id)) state.info.push(action.payload);
                 state.info.sort((a, b) => b.time - a.time);
-               
+                if(state.info.length > 100) state.info = state.info.slice(0, 100);
             })
             .addCase(fetchGetInfo.rejected, (state, action) => {
                 state.status = 'error';

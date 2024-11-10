@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { memo } from "react";
 import styles from "./mainPage.module.css";
 import getTime from "../../../helpers/getTime";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +9,9 @@ import { setPage } from "../../../redux/slices/PagesSlice";
 const LIMIT = 100;
 
 
-const MainPage = memo(() => {
+const MainPage = () => {
     const { info } = useSelector(state => state.list);
-   // console.log('info! loof length', info);
+   console.log('info! loof length', info);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -82,13 +81,5 @@ const MainPage = memo(() => {
             </main >
         </>
     )
-}, (prevProps, nextProps) => {
-    const prevData = prevProps.info || [];
-    const nextData = nextProps.info || [];
-    const sortedPrev = [...prevData].sort((a, b) => a.id - b.id);
-    const sortedNext = [...nextData].sort((a, b) => a.id - b.id);
-
-    return sortedPrev.every((value, index) => value.id === sortedNext[index].id);
-
-});
+};
 export default MainPage;

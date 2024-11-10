@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import HeaderComponent from "../../Header/HeaderComponent";
 import MainPage from "../MainPage/MainPage";
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,10 @@ function HomePage() {
   const dispach = useDispatch();
   const { data } = useSelector(state => state.list);
  
-
+const cachedComponent = useMemo(() => {
+  
+  return <MainPage />;
+  }, [data]);
 
   useEffect(() => {
     dispach(fetchGetList());
@@ -22,7 +25,7 @@ function HomePage() {
   return (
     <>
       <HeaderComponent />
-      <MainPage />
+      {cachedComponent}
       <FooterComponent />
     </>
   )
