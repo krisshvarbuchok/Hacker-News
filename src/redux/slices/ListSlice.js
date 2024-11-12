@@ -6,9 +6,7 @@ const getList = async() => {
     return response.data;
 }
 const getListRefresh = async() => {
-    const response = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty');
-    console.log('reshesh in redux');
-    
+    const response = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'); 
     return response.data;
 }
 
@@ -23,26 +21,19 @@ const fetchGetList = createAsyncThunk('list/fetchGetList', async() =>{
 
 const getInfo = async (id) => {
     const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
-    //console.log(response.data);
-    
     return response.data;
 }
 
 const fetchGetInfo = createAsyncThunk('info/fetchGetInfo', async(id) => {
     const data = await getInfo(id);
-    //console.log(data);
-    
     return data;
 })
 const getInfoAboutComments = async(id) =>{
     const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
-    //console.log(response.data);
-    
     return response.data;
 }
 const fetchGetInfoAboutComments = createAsyncThunk('comments/fetchGetInfoAboutComments', async(id) =>{
     const data = await getInfoAboutComments(id);
-    //console.log('update comm', data);
     return data;
 })
 

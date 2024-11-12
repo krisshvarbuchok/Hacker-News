@@ -13,12 +13,9 @@ import { fetchUpdateOpenNew } from "../../../../redux/slices/OpenNewSlice";
 const BodyOpenNew = () => {
     const [loading, setLoading] = useState(false);
     const { statusNew } = useSelector(state => state.open);
-    //const { comments } = useSelector(state => state.list);
-    //console.log('comments', comments);
 
     let date;
     const { open } = useSelector(state => state.open);
-    console.log(open);
 
     const dispatch = useDispatch();
 

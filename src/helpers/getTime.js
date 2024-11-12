@@ -2,7 +2,7 @@
 const getTime = (time) =>{
     const date = new Date();
     const minutes = Math.floor((date - (time * 1000)) / 1000 / 60);
-    //console.log('minutes' , minutes);
+    
     
         if(Math.floor(minutes / 60 / 24) > 1) return `${Math.floor(minutes / 60 / 24)} days ago`; 
         else if(Math.floor(minutes / 60 / 24) === 1) return `1 day ago`; 

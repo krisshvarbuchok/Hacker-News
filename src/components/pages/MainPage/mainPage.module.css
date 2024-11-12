@@ -5,8 +5,6 @@
     flex-direction: column;
     background-color: #f6f6ef;
     width: 100%;
-    /* flex: 1; */
-    /* position: relative; */
 }
 
 .item{
@@ -48,7 +46,6 @@ li::marker {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    /* position: relative; */
   }
   
   .pageButton {

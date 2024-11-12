@@ -12,7 +12,6 @@ const LIMIT = 100;
 
 const MainPage = () => {
     const { info } = useSelector(state => state.list);
-    //console.log('info! loof length', info);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -51,11 +50,11 @@ const MainPage = () => {
                                     <p className={styles.title} onClick={() => handleOpen(item)}>{item.title} </p>
 
                                     <div className={styles.info}>
-                                        <p className={styles.by}>Autor: {item.by}</p>
+                                        <p>Autor: {item.by}</p>
                                         <p>|</p>
-                                        <p className={styles.time}>Published: {getTime(item.time)}</p>
+                                        <p>Published: {getTime(item.time)}</p>
                                         <p>|</p>
-                                        <p className={styles.score}>Rating: {item.score} </p>
+                                        <p>Rating: {item.score} </p>
                                     </div>
 
                                 </li>

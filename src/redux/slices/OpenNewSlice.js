@@ -3,12 +3,10 @@ import axios from "axios";
 
 const updateOpenNew = async(id) => {
     const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
-    //console.log(response.data);
     return response.data;
 }
 const fetchUpdateOpenNew = createAsyncThunk('openNew/fetchUpdateOpenNew', async(id) =>{
     const data = await updateOpenNew(id);
-    console.log('update comm', data);
     return data;
 })
 
@@ -20,7 +18,6 @@ const OpenNewSlice = createSlice({
     },
     reducers: {
         setOpenNew: (state, action) => {
-            //console.log(action.payload);
             state.open = action.payload;
         },
         cleverOpenNew: (state, action) => {
