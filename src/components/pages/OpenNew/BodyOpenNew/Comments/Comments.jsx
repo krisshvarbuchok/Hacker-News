@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import styles from './comments.module.css';
 import { fetchGetInfoAboutComments } from "../../../../../redux/slices/ListSlice";
 import { Skeleton, Stack } from "@mui/material";
+import TextComment from "./TextComment/TextComment";
 
 
 const Comments = ({ kidsIds = [] }) => {
@@ -45,7 +46,9 @@ const Comments = ({ kidsIds = [] }) => {
 
                                     <>
                                         <span style={{ fontWeight: 'bold' }}>{comment?.by ?? 'Deleted comment'}</span>
-                                        <p style={{ fontStyle: 'italic', margin: 0 }}>{comment.text}</p>
+                                        {console.log((comment.text))}
+                                        
+                                        <div style={{ fontStyle: 'italic', margin: 0 }}><TextComment comm ={comment.text} /></div>
                                     </>
 
                                 }

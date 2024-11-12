@@ -1,7 +1,11 @@
 .footer{
     position: relative;
-    height: 50px;
+    height: 30px;
     background-color: #f6f6ef;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
    
 }
 .footer::after{
@@ -14,12 +18,7 @@
     background-color: #ff6600;
 }
 .info{
-    padding-top: 20px;
     font-size: 14px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 a {
     margin: 0 4px; 

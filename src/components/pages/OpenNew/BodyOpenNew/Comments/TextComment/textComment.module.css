@@ -1,0 +1,9 @@
+.styledLink {
+    color: grey;
+    text-decoration: none;
+  }
+  
+  .styledLink:hover {
+    color: blue; 
+    text-decoration: underline; 
+  }
