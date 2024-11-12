@@ -10,7 +10,7 @@ const OpenNew = () => {
             <div className="container">
                 <div className={styles.position}>
                     <HeaderComponent />
-                    <div className={`${styles.aboutNew} ${styles.mainContainer}`}>
+                    <div className={styles.aboutNew} >
                         <BodyOpenNew />
                     </div>
                 </div>

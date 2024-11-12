@@ -63,40 +63,15 @@ const ListSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(fetchGetList.pending, (state, action) => {
-                state.status = 'loading';
-            })
             .addCase(fetchGetList.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-               
-               //if(!state.data.every((value, index) => value === action.payload[index])) state.data = action.payload;;
-               
                 state.data = action.payload;
             })
-            .addCase(fetchGetList.rejected, (state, action) => {
-                state.status = 'error';
-                state.error = action.payload;
-            })
-            .addCase(fetchGetListRefresh.pending, (state, action) => {
-                state.status = 'loading';
-            })
             .addCase(fetchGetListRefresh.fulfilled, (state, action) => {
-                state.status = 'succeeded';
                 if (JSON.stringify(state.data) !== JSON.stringify(action.payload)) {
                     state.data = action.payload;
                 }
-               
-                //state.data = action.payload;
-            })
-            .addCase(fetchGetListRefresh.rejected, (state, action) => {
-                state.status = 'error';
-                state.error = action.payload;
-            })
-            .addCase(fetchGetInfo.pending, (state, action) => {
-                state.status = 'loading';
             })
             .addCase(fetchGetInfo.fulfilled, (state, action) => {
-                state.status = 'succeeded';
                 if(action.payload && action.payload.id && !state.info.find(item => item.id === action.payload.id)) state.info.push(action.payload);
                 state.info.sort((a, b) => b.time - a.time);
                 if(state.info.length > 100) state.info = state.info.slice(0, 100);

@@ -1,7 +1,15 @@
-.container{
+.container {
   max-width: 100%;
   max-width: 1040px;
   min-width: 100px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.error {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

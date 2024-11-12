@@ -9,11 +9,10 @@ import FooterComponent from '../../Footer/FooterComponent';
 
 function HomePage() {
   const dispach = useDispatch();
-  const { data } = useSelector(state => state.list);
- 
-const cachedComponent = useMemo(() => {
-  
-  return <MainPage />;
+  const { data, error } = useSelector(state => state.list);
+
+  const cachedComponent = useMemo(() => {
+    return <MainPage />;
   }, [data]);
 
   useEffect(() => {
@@ -22,6 +21,12 @@ const cachedComponent = useMemo(() => {
   useEffect(() => {
     data.forEach(item => dispach(fetchGetInfo(item)));
   }, [dispach, data])
+  if (error !== null) {
+    return <div className='error'>
+      <p>...ooops</p>
+      <img src='/error.svg' alt='error' width={50} />
+    </div>
+  }
   return (
     <>
       <HeaderComponent />

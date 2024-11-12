@@ -1,12 +1,9 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: antiquewhite;
 }
 
 
-/* body {
-  margin: 0;
-  background-color: #fafafa;
-} */
 *{
   /* height: 100%; */
   margin: 0;

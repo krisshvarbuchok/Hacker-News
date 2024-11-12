@@ -3,9 +3,21 @@
     padding-left: 35px;
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 50px - 50px);
 }
 .warning{
     padding-top: 100px; 
+    padding-left: 30px;
+    min-height: calc(100vh - 70px - 80px);
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #828282;
+    gap: 50px;
+}
+.withoutComm{
+    padding-top: 50px; 
     padding-left: 30px;
     font-size: 18px;
     display: flex;
@@ -46,11 +58,4 @@ a{
     gap: 10px;
     align-items: center;
 }
-.noComments{
-    margin-top: 50px;
-    color: #828282;
-    font-style: italic;
-}
-.refreshIcon{
-   border-radius: 50%;
-}
+

@@ -11,15 +11,18 @@ import { setPage } from "../../redux/slices/PagesSlice";
 function HeaderComponent() {
     const dispach = useDispatch();
     const navigate = useNavigate();
-    const {open} = useSelector(state => state.open);
+    const { open } = useSelector(state => state.open);
 
     const handleRefresh = () => {
-        dispach(fetchGetListRefresh());
-        console.log('refresh on page');
-        
-        navigate('/');
-        dispach(cleverOpenNew());
-        dispach(setPage(1));
+        try {
+            dispach(fetchGetListRefresh());
+            navigate('/');
+            dispach(cleverOpenNew());
+            dispach(setPage(1));
+        } 
+        catch(err){
+            console.log(err.message);
+        }
     }
     useEffect(() => {
         const handleScroll = () => {
@@ -33,7 +36,7 @@ function HeaderComponent() {
 
         window.addEventListener('scroll', handleScroll);
 
-        // Удаляем обработчик скролла при размонтировании компонента
+      
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -47,7 +50,7 @@ function HeaderComponent() {
                             src={`/news.svg`}
                         />
                     </div>
-                    {Object.keys(open).length !== 0 && <div className={styles.comeBack}><ComeBack /></div> }
+                    {Object.keys(open).length !== 0 && <div className={styles.comeBack}><ComeBack /></div>}
                     <button className={styles.button} onClick={handleRefresh}>Fresh news</button>
                 </div>
             </nav>

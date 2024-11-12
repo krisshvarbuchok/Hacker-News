@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./bodyOpenNew.module.css";
-import CommentsWrapper from "./Comments/Comments";
+import Comments from "./Comments/Comments";
 import RefreshIcon from '@mui/icons-material/Refresh';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
@@ -9,12 +9,17 @@ import { fetchGetInfoAboutComments } from "../../../../redux/slices/ListSlice";
 import { fetchUpdateOpenNew } from "../../../../redux/slices/OpenNewSlice";
 
 
+
 const BodyOpenNew = () => {
     const [loading, setLoading] = useState(false);
     const { statusNew } = useSelector(state => state.open);
+    //const { comments } = useSelector(state => state.list);
+    //console.log('comments', comments);
 
     let date;
     const { open } = useSelector(state => state.open);
+    console.log(open);
+
     const dispatch = useDispatch();
 
     try {
@@ -38,14 +43,18 @@ const BodyOpenNew = () => {
         else setLoading(false);
     }, [statusNew]);
 
+
+
     useEffect(() => {
         if (open.kids) {
             open.kids.forEach((item) => {
-                console.log('refresh comm');
-                dispatch(fetchGetInfoAboutComments(item));
+                dispatch(fetchGetInfoAboutComments(item)).then(() => {
+
+                });
             });
         }
-    }, [open]);
+    }, [open, dispatch]);
+
 
     const handleRefreshComm = () => {
         dispatch(fetchUpdateOpenNew(open.id));
@@ -78,40 +87,40 @@ const BodyOpenNew = () => {
                             <p> {open.kids.length}</p> :
                             <p>0</p>
                         }
-                        <Box sx={{ '& > button': {  m:0, p:0 } }} >                   
-                                <LoadingButton
-                                    onClick={() => handleRefreshComm()}
-                                    loading={loading}
-                                    className={styles.refreshIcon}
-                                    sx={{ '& .MuiButton-endIcon': {
-                                        
+                        <Box sx={{ '& > button': { m: 0, p: 0 } }} >
+                            <LoadingButton
+                                onClick={() => handleRefreshComm()}
+                                loading={loading}
+                                sx={{
+                                    '& .MuiButton-endIcon': {
+
                                         marginRight: '0px',
                                         marginLeft: '0px',
-                                      },
-                                        borderRadius: '50%',  
-                                        width: '50px', 
-                                        height: '50px', 
+                                    },
+                                    borderRadius: '50%',
+                                    width: '50px',
+                                    height: '50px',
+                                    backgroundColor: 'transparent',
+                                    color: 'black',
+                                    '&:hover': {
                                         backgroundColor: 'transparent',
-                                        color: 'black',
-                                        '&:hover': {
-                                            backgroundColor: 'transparent',
-                                            color: '#ff6600',
-                                        },
-                                        '&:active': {
-                                            backgroundColor: 'transparent',
-                                            border: 'none',
-                                            boxShadow: 'none',
-                                        },
-                                    }}
-                                    endIcon={<RefreshIcon />}
-                                >
-                                    </LoadingButton >
-                            </Box>
+                                        color: '#ff6600',
+                                    },
+                                    '&:active': {
+                                        backgroundColor: 'transparent',
+                                        border: 'none',
+                                        boxShadow: 'none',
+                                    },
+                                }}
+                                endIcon={<RefreshIcon />}
+                            >
+                            </LoadingButton >
+                        </Box>
                     </div>
                 </div>
 
-                {open.descendants > 0 ? <CommentsWrapper /> :
-                    <div className={styles.warning} >
+                {open.descendants === 0 ?
+                    <div className={styles.withoutComm} >
                         <p>No comments</p>
                         <div>
                             <img className={styles.img}
@@ -119,8 +128,10 @@ const BodyOpenNew = () => {
                                 src={`/empty.svg`}
                             />
                         </div>
-
-                    </div>}
+                    </div>
+                    :
+                    <Comments kidsIds={open.kids} />
+                }
             </div>
         </>
     )
