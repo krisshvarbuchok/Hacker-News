@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://krisshvarbuchok.github.io/Hacker-News",
+  "homepage": "https://krisshvarbuchok.github.io/Hacker-News/",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
