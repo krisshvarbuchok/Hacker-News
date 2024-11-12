@@ -7,7 +7,7 @@ const RouterComponent = () =>{
     return (
         <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path="openNew" element={<OpenNew />}/>
+            <Route path="/openNew" element={<OpenNew />}/>
         </Routes>
     )
 }

@@ -30,7 +30,7 @@ const MainPage = () => {
             if (item.kids) item.kids.forEach(item => {
                 dispatch(fetchGetInfoAboutComments(item))
             });
-            navigate('openNew');
+            navigate('/openNew');
         }
         catch(err){
             console.log(err.message); 
