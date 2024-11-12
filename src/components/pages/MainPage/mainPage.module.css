@@ -54,6 +54,7 @@ li::marker {
     border: none;
     padding: 10px;
     transition: all 0.5s ease-out; 
+    color: black;
   }
   .pageButton:hover{
     background-color: rgb(142, 142, 142);
