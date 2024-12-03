@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+console.log(import.meta.env.VITE_API_BASE_URL);
 
 const getList = async() => {
     const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/v0/newstories.json?print=pretty`);
