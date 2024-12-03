@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetListRefresh } from "../../redux/slices/ListSlice";
 import { useNavigate } from "react-router-dom";
-import styles from "./headerComponent.module.css"
+import styles from "./index.module.css"
 import { useEffect } from "react";
-import ComeBack from "../pages/OpenNew/ComeBack/ComeBack";
+import ComeBack from "../../pages/OpenNew/ComeBack";
 import { cleverOpenNew } from "../../redux/slices/OpenNewSlice";
 import { setPage } from "../../redux/slices/PagesSlice";
 

@@ -1,4 +1,4 @@
-.list{
+.list {
     padding-top: 100px;
     min-height: 100vh;
     display: flex;
@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.item{
+.item {
     list-style-type: disclosure-closed;
     display: flex;
     flex-direction: column;
@@ -17,46 +17,28 @@
     padding: 5px;
     border-bottom: solid 1px gray;
 }
+
 li::marker {
-	color: #828282;
-	font-size: 14px;
+    color: #828282;
+    font-size: 14px;
 }
-.title{
+
+.title {
     cursor: pointer;
-    text-decoration:none;
+    text-decoration: none;
     color: black;
     font-weight: 500;
     font-size: 16px;
 }
-.title:hover{
+
+.title:hover {
     text-decoration: underline;
 }
 
-.info{
+.info {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     color: #828282;
     gap: 5px;
     font-size: 14px;
 }
-
-.page {
-    margin: 15px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  
-  .pageButton {
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    padding: 10px;
-    transition: all 0.5s ease-out; 
-  }
-  .pageButton:hover{
-    background-color: rgb(142, 142, 142);
-    transition: all 0.5s ease-out; 
-  }
-

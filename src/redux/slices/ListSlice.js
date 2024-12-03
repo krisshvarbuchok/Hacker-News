@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const getList = async() => {
-    const response = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty');
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/v0/newstories.json?print=pretty`);
     return response.data;
 }
 const getListRefresh = async() => {
-    const response = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty'); 
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/v0/newstories.json?print=pretty`); 
     return response.data;
 }
 
@@ -20,7 +20,7 @@ const fetchGetList = createAsyncThunk('list/fetchGetList', async() =>{
 })
 
 const getInfo = async (id) => {
-    const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/v0/item/${id}.json?print=pretty`);
     return response.data;
 }
 
@@ -29,7 +29,7 @@ const fetchGetInfo = createAsyncThunk('info/fetchGetInfo', async(id) => {
     return data;
 })
 const getInfoAboutComments = async(id) =>{
-    const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/v0/item/${id}.json?print=pretty`);
     return response.data;
 }
 const fetchGetInfoAboutComments = createAsyncThunk('comments/fetchGetInfoAboutComments', async(id) =>{

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const updateOpenNew = async(id) => {
-    const response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`);
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/v0/item/${id}.json?print=pretty`);
     return response.data;
 }
 const fetchUpdateOpenNew = createAsyncThunk('openNew/fetchUpdateOpenNew', async(id) =>{
