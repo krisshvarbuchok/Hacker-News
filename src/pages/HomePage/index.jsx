@@ -24,7 +24,7 @@ function HomePage() {
   if (error !== null) {
     return <div className='error'>
       <p>...ooops</p>
-      <img src='/error.svg' alt='error' width={50} />
+      <img src='/Hacker-News/error.svg' alt='error' width={50} />
     </div>
   }
   return (

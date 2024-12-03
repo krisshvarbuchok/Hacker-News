@@ -47,7 +47,7 @@ function HeaderComponent() {
                     <div className={styles.imgContainer}>
                         <img className={styles.img}
                             alt='logo'
-                            src={`/news.svg`}
+                            src={`/Hacker-News/news.svg`}
                         />
                     </div>
                     {Object.keys(open).length !== 0 && <div className={styles.comeBack}><ComeBack /></div>}

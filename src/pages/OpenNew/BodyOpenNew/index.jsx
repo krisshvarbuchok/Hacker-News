@@ -25,7 +25,7 @@ const BodyOpenNew = () => {
       <div className={styles.warning}>
         <p>There isn`t a new. Refresh news.</p>
         <div>
-          <img className={styles.img} alt="empty" src={`/empty.svg`} />
+          <img className={styles.img} alt="empty" src={`/Hacker-News/empty.svg`} />
         </div>
       </div>
     );
@@ -105,7 +105,7 @@ const BodyOpenNew = () => {
         <div className={styles.withoutComm}>
           <p>No comments</p>
           <div>
-            <img className={styles.img} alt="empty" src={`/empty.svg`} />
+            <img className={styles.img} alt="empty" src={`/Hacker-News/empty.svg`} />
           </div>
         </div>
       ) : (
